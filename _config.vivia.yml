@@ -56,13 +56,14 @@ categories:
 # Third-party comment system
 comment:
   valine:
-    enable: false        # Enable Valine comment system
-    appId: 
-    appKey: 
-    placeholder: Just go go
+    enable: true          # Enable Valine comment system
+    appId: XFCQYSkCRKnBvOkCNwwyqstI-MdYXbMMI
+    appKey: 4bzESEecmkEv7kba7m0CZGHE
+    placeholder: talk to ido!
     pageSize: 10
     highlight: true
     serverURLs: 
+     - https://xfcqyskc.api.lncldglobal.com
     # Other supported parameters can be added here if needed
     # Visit https://valine.js.org/configuration.html for more details
   twikoo:

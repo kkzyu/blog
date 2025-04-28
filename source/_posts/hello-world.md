@@ -8,7 +8,7 @@ tags: web前端
 ## 部署过程
 
 ### 创建hexo项目
-    hexo是github上一个开源的博客模板，首先可以在新目录下创建一个hexo项目，然后进入该目录，执行如下命令：
+hexo是github上一个开源的博客模板，首先可以在新目录下创建一个hexo项目，然后进入该目录，执行如下命令：
 ``` bash
 $ npm install -g hexo-cli
 ```
