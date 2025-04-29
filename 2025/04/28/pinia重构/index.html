@@ -28,7 +28,7 @@
 <meta property="og:description" content="Pinia 重构过程记录重构步骤 安装必要依赖 1npm install pinia  创建 Pinia Store 12345678910111213141516171819202122232425&#x2F;&#x2F; stores&#x2F;cvStore.jsimport &#123; defineStore &#125; from &#x27;pinia&#x27;import &#123; message &amp;#1">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-28T14:05:46.000Z">
-<meta property="article:modified_time" content="2025-04-28T15:15:45.791Z">
+<meta property="article:modified_time" content="2025-04-29T03:25:52.493Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web前端">
 <meta name="twitter:card" content="summary">
@@ -191,7 +191,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.6k words 
+            1.4k words 
           </div>
         </div>
         
@@ -209,8 +209,6 @@
 </li>
 <li><p>修改组件结构</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; storeToRefs &#125; from &#x27;pinia&#x27;</span><br><span class="line">import &#123; useCvStore &#125; from &#x27;@/stores/cvStore&#x27;</span><br><span class="line"></span><br><span class="line">const store = useCvStore()</span><br><span class="line">const &#123; </span><br><span class="line">  currentLang,</span><br><span class="line">  activeSections,</span><br><span class="line">  isDownloadingPdf,</span><br><span class="line">  cvData</span><br><span class="line">&#125; = storeToRefs(store)</span><br><span class="line"></span><br><span class="line">// 方法代理</span><br><span class="line">const handleLangChange = (&#123; key &#125;) =&gt; store.handleLangChange(key)</span><br><span class="line">const downloadPDF = () =&gt; store.downloadPDF(cvContainerRef.value)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>状态管理迁移<br>| 原位置 | 新位置 | 示例 | |——–|——–|——| | data() | store state | currentLang | | computed | store getters | cvData | | methods | store actions | downloadPDF |</p>
 </li>
 <li><p>遇到的问题及解决方案<br>问题1: 图标不显示<br>原因: <script setup> 需要显式导入组件<br>解决:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; GlobalOutlined &#125; from &#x27;@ant-design/icons-vue&#x27;</span><br></pre></td></tr></table></figure>
