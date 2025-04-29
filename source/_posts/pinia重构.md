@@ -59,29 +59,3 @@ const handleLangChange = ({ key }) => store.handleLangChange(key)
 const downloadPDF = () => store.downloadPDF(cvContainerRef.value)
 </script>
 ```
-
-4. 遇到的问题及解决方案
-问题1: 图标不显示
-原因: <script setup> 需要显式导入组件
-解决:
-```vue
-import { GlobalOutlined } from '@ant-design/icons-vue'
-```
-问题2: DOM 元素访问
-原因: Store 无法直接访问组件 ref
-解决: 通过参数传递 DOM 元素
-```js
-// 组件中
-store.downloadPDF(cvContainerRef.value)
-
-// Store 中
-downloadPDF(cvElement) {
-  // 使用 cvElement
-}
-```
-问题3: 响应式丢失
-原因: 直接解构 store 会导致响应式丢失
-解决: 使用 storeToRefs
-```js
-const { currentLang } = storeToRefs(store)
-```
