@@ -60,10 +60,7 @@ const downloadPDF = () => store.downloadPDF(cvContainerRef.value)
 </script>
 ```
 
-4. 状态管理迁移
-| 原位置 | 新位置 | 示例 | |--------|--------|------| | data() | store state | currentLang | | computed | store getters | cvData | | methods | store actions | downloadPDF |
-
-5. 遇到的问题及解决方案
+4. 遇到的问题及解决方案
 问题1: 图标不显示
 原因: <script setup> 需要显式导入组件
 解决:
