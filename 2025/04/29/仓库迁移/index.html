@@ -14,18 +14,23 @@
   
 
   
-  <title>Archives: 2025/4 | Hexo</title>
+  <title>仓库迁移 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/blog/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/blog/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://kkzyu.github.io/blog/archives/2025/04/index.html">
+  <meta name="description" content="仓库迁移与合并 先删除现有远程仓库git remote remove github  添加新仓库为远程仓库git remote add github &#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#111;&#x6d;:kkzyu&#x2F;kkzyu.github.io.git  验证远程仓库git r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="仓库迁移">
+<meta property="og:url" content="https://kkzyu.github.io/blog/2025/04/29/%E4%BB%93%E5%BA%93%E8%BF%81%E7%A7%BB/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="仓库迁移与合并 先删除现有远程仓库git remote remove github  添加新仓库为远程仓库git remote add github &#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#111;&#x6d;:kkzyu&#x2F;kkzyu.github.io.git  验证远程仓库git r">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-29T03:00:26.000Z">
+<meta property="article:modified_time" content="2025-04-29T03:19:23.601Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
@@ -153,82 +158,123 @@
     <div id="content-body">
        
 
-<div class="archive-main-card">
-    <div class="archive-top">
-      <div class="main-title-bar">
-        <div class="main-title-dot"></div>
-        <h1 class="article-title">Archives</h1>
-      </div>    
+
+<article id="post-仓库迁移" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        仓库迁移
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-29T03:00:26.000Z" itemprop="datePublished">2025-04-29</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            453 words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h2 id="仓库迁移与合并"><a href="#仓库迁移与合并" class="headerlink" title="仓库迁移与合并"></a>仓库迁移与合并</h2><ol>
+<li><p>先删除现有远程仓库<br>git remote remove github</p>
+</li>
+<li><p>添加新仓库为远程仓库<br>git remote add github <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#111;&#x6d;">&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#111;&#x6d;</a>:kkzyu&#x2F;kkzyu.github.io.git</p>
+</li>
+<li><p>验证远程仓库<br>git remote -v</p>
+</li>
+<li><p>获取仓库2代码<br>git fetch github</p>
+</li>
+<li><p>合并代码（保留双方历史）<br>git merge github&#x2F;main –allow-unrelated-histories</p>
+</li>
+<li><p>解决冲突（重点关注以下文件）</p>
+</li>
+</ol>
+<h1 id="用编辑器处理冲突的-gitignore、package-json等"><a href="#用编辑器处理冲突的-gitignore、package-json等" class="headerlink" title="用编辑器处理冲突的.gitignore、package.json等"></a>用编辑器处理冲突的.gitignore、package.json等</h1><h1 id="保留Gitee仓库的-gitignore规则"><a href="#保留Gitee仓库的-gitignore规则" class="headerlink" title="保留Gitee仓库的.gitignore规则"></a>保留Gitee仓库的.gitignore规则</h1><ol start="7">
+<li><p>提交变更<br>git add .<br>git commit -m “迁移完成：包含仓库2源码及网址文件”<br>git push origin main</p>
+</li>
+<li><p>验证代码完整性<br>npm install &amp;&amp; npm run dev # 确保能正常启动开发服务器</p>
+</li>
+</ol>
+
+        
+      </div>
+
+         
     </div>
     
-    
-      
-      
-        
-        <div class="year-line">
-            <div class="year-num">2025</div>
-            <div class="dot-wrapper">
-                <div class="dot"></div>
-            </div>
-            <div class="article-count">3 articles</div>
-        </div>
-      
-      <a class="archive-article-link" href="/blog/2025/04/29/%E4%BB%93%E5%BA%93%E8%BF%81%E7%A7%BB/" title="仓库迁移">
-        <div class="date">04-29</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    仓库迁移
-                
-            </div>
-        </div>
-        <div class="tags">
-            #git
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/blog/2025/04/28/pinia%E9%87%8D%E6%9E%84/" title="pinia重构">
-        <div class="date">04-28</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    pinia重构
-                
-            </div>
-        </div>
-        <div class="tags">
-            #web前端
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/blog/2025/04/12/hello-world/" title="hexo blog部署记录">
-        <div class="date">04-12</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    hexo blog部署记录
-                
-            </div>
-        </div>
-        <div class="tags">
-            #web前端
-        </div>
-      </a>
-    
+     
   </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/blog/2025/04/28/pinia%E9%87%8D%E6%9E%84/"
+      title="pinia重构"
+     >
+
+    <p class="title-text">
+      
+        pinia重构
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+  
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <div id="comment-card" class="comment-card">
+    <div class="main-title-bar">
+      <div class="main-title-dot"></div>
+      <div class="main-title">Comments </div>
+    </div>
+    <div id="vcomments"></div>
+  </div>
+  <script>
+      new Valine({"enable":true,"appId":"XFCQYSkCRKnBvOkCNwwyqstI-MdYXbMMI","appKey":"4bzESEecmkEv7kba7m0CZGHE","placeholder":"talk to ido!","pageSize":10,"highlight":true,"serverURLs":["https://xfcqyskc.api.lncldglobal.com"],"el":"#vcomments"});
+  </script>
+
+
+
+
     </div>
     <div id="footer-wrapper">
       <footer id="footer">
