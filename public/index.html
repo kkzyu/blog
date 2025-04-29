@@ -108,7 +108,7 @@
   <div class="info-card">
     <div class="avatar">
       
-        <image src=/blog/avatar.jpg></image>
+        <image src=/blog/headpic.jpg></image>
       
       <div class="img-dim"></div>
     </div>
@@ -120,7 +120,7 @@
         
           <a class="link-btn" target="_blank" rel="noopener" href="https://x.com/IdoAlanni" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
         
-          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+          <a class="link-btn" target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199353377984/" title="Steam"><i class="fa-brands fa-steam"></i></a>
         
           <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/kkzyu" title="GitHub"><i class="fa-brands fa-github"></i></a>
          
@@ -145,6 +145,51 @@
     </div>
   </div>
 
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Archives</h3>
+      
+      
+        <a class="archive-link" href="/blog/archives/2025/04 ">
+          April 2025 
+          <div class="archive-count">3 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/blog/2025/04/29/%E4%BB%93%E5%BA%93%E8%BF%81%E7%A7%BB/" title="仓库迁移" >
+            <div class="recent-link-text">
+              仓库迁移
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/blog/2025/04/28/pinia%E9%87%8D%E6%9E%84/" title="pinia重构" >
+            <div class="recent-link-text">
+              pinia重构
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/blog/2025/04/12/hello-world/" title="hexo blog部署记录" >
+            <div class="recent-link-text">
+              hexo blog部署记录
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
 
     
   </div>
@@ -185,7 +230,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            453 words 
+            396 words 
           </div>
         </div>
         
@@ -197,23 +242,22 @@
           <div class="truncate-text">
             
               仓库迁移与合并
-先删除现有远程仓库git remote remove github
-
-添加新仓库为远程仓库git remote add github &#x67;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#111;&#109;:kkzyu&#x2F;kkzyu.github.io.git
-
-验证远程仓库git remote -v
-
-获取仓库2代码git fetch github
-
-合并代码（保留双方历史）git merge github&#x2F;main –allow-unrelated-histories
-
+先删除现有远程仓库1git remote remove github
+添加新仓库为远程仓库1git remote add github git@github.com:kkzyu/kkzyu.github.io.git
+验证远程仓库1git remote -v
+获取仓库2代码1git fetch github
+合并代码（保留双方历史）1git merge github/main --allow-unrelated-histories
 解决冲突（重点关注以下文件）
 
 
-用编辑器处理冲突的.gitignore、package.json等保留Gitee仓库的.gitignore规则
-提交变更git add .git commit -m “迁移完成：包含仓库2源码及网址文件”git push origin main
+用编辑器处理冲突的.gitignore、package.json等
+保留Gitee仓库的.gitignore规则
 
-验证代码完整性npm install &amp;&amp; npm run dev # 确保能正常启动开发服...
+
+提交变更123git add .git commit -m &quot;迁移完成：包含仓库2源码及网址文件&quot;git push origin main
+验证代码完整性1npm install &amp;&amp; npm run dev # 确保能正常启动开发服务器
+
+
             
           </div>
         
