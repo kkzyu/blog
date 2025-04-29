@@ -22,7 +22,7 @@ hue: 300                         # The hue of the theme color (e.g. red: 0, oran
                                  # Visit `saicaca.github.io/vivia-preview` to preview the theme color
 
 # Personal info
-avatar: /source/headpic.jpg                                         # Path to the avatar image relative to /source
+avatar: /headpic.jpg                                         # Path to the avatar image relative to /source
 author: Alanni ido
 subtitle: 爆ぜろリアル弹けろシナプスバニッシュメント・ディス・ワールド！
 links:
