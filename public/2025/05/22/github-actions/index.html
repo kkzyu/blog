@@ -14,18 +14,24 @@
   
 
   
-  <title>Hexo</title>
+  <title>github-actions | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/blog/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/blog/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://kkzyu.github.io/blog/index.html">
+  <meta name="description" content="尝试了一下github的自动部署网站，进入actions后new一个workflow，添加以下代码并commit： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960name: Deploy Vue Frontendon:  p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github-actions">
+<meta property="og:url" content="https://kkzyu.github.io/blog/2025/05/22/github-actions/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="尝试了一下github的自动部署网站，进入actions后new一个workflow，添加以下代码并commit： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960name: Deploy Vue Frontendon:  p">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-05-22T03:52:16.000Z">
+<meta property="article:modified_time" content="2025-05-22T04:19:35.764Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="web前端">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
@@ -42,7 +48,7 @@
   
    
   <div id="main-grid" class="  ">
-    <div id="nav" class=" is_home "  >
+    <div id="nav" class=""  >
       <navbar id="navbar">
   <nav id="title-nav">
     <a href="/blog/">
@@ -207,11 +213,12 @@
 </sidebar>
     </div>
     <div id="content-body">
-      
-   
+       
 
 
 <article id="post-github-actions" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
    
   <div class="article-inner">
     <div class="article-main">
@@ -221,8 +228,8 @@
   <div class="main-title-dot"></div>
   
     
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/blog/2025/05/22/github-actions/">github-actions</a>
+      <h1 class="p-name article-title" itemprop="headline name">
+        github-actions
       </h1>
     
   
@@ -250,12 +257,21 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <div class="truncate-text">
-            
-              尝试了一下github的自动部署网站，进入actions后new一个workflow，添加以下代码并commit：
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960name: Deploy Vue Frontendon:  push:    branches: [ &quot;main&quot; ]  workflow_dispatch: # 允许手动触发# 为 GITHUB_TOKEN 设置默认权限，以便部署到 GitHub Pagespermissions:  contents: read      # checkout 代码需要  pages: write        # 部署到 GitHub Pages 需要  id-token: write     # OIDC 认证需要 (actions/deploy-pages 使用)# 只允许一个并发部署，跳过在队列中等待的运行。# 但是，不要取消进行中的...
-            
-          </div>
+          <p>尝试了一下github的自动部署网站，进入actions后new一个workflow，添加以下代码并commit：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">name: Deploy Vue Frontend</span><br><span class="line"></span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches: [ &quot;main&quot; ]</span><br><span class="line">  workflow_dispatch: # 允许手动触发</span><br><span class="line"></span><br><span class="line"># 为 GITHUB_TOKEN 设置默认权限，以便部署到 GitHub Pages</span><br><span class="line">permissions:</span><br><span class="line">  contents: read      # checkout 代码需要</span><br><span class="line">  pages: write        # 部署到 GitHub Pages 需要</span><br><span class="line">  id-token: write     # OIDC 认证需要 (actions/deploy-pages 使用)</span><br><span class="line"></span><br><span class="line"># 只允许一个并发部署，跳过在队列中等待的运行。</span><br><span class="line"># 但是，不要取消进行中的运行，因为我们希望允许那些部署完成。</span><br><span class="line">concurrency:</span><br><span class="line">  group: &quot;pages&quot;</span><br><span class="line">  cancel-in-progress: false</span><br><span class="line"></span><br><span class="line">jobs:</span><br><span class="line">  build:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - name: Checkout</span><br><span class="line">        uses: actions/checkout@v4</span><br><span class="line"></span><br><span class="line">      - name: Setup Node.js</span><br><span class="line">        uses: actions/setup-node@v4</span><br><span class="line">        with:</span><br><span class="line">          node-version: &quot;20&quot; # 或者你的项目使用的版本</span><br><span class="line">          cache: &#x27;npm&#x27;</span><br><span class="line">          cache-dependency-path: client/package-lock.json # 更精确的缓存路径</span><br><span class="line"></span><br><span class="line">      - name: Install Dependencies</span><br><span class="line">        working-directory: ./client</span><br><span class="line">        run: npm ci # 使用 ci 更稳定</span><br><span class="line"></span><br><span class="line">      - name: Build</span><br><span class="line">        working-directory: ./client</span><br><span class="line">        run: npm run build # 确保你的 vite.config.js 中 base: &#x27;/仓库名/&#x27; 已设置</span><br><span class="line"></span><br><span class="line">      - name: Setup Pages</span><br><span class="line">        uses: actions/configure-pages@v4 # 官方action</span><br><span class="line"></span><br><span class="line">      - name: Upload artifact</span><br><span class="line">        uses: actions/upload-pages-artifact@v3 # 官方action</span><br><span class="line">        with:</span><br><span class="line">          # 从 client/dist 目录上传</span><br><span class="line">          path: &#x27;./client/dist&#x27;</span><br><span class="line"></span><br><span class="line">  deploy:</span><br><span class="line">    needs: build # 依赖 build job</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    environment:</span><br><span class="line">      name: github-pages</span><br><span class="line">      url: $&#123;&#123; steps.deployment.outputs.page_url &#125;&#125; # 输出部署后的 URL</span><br><span class="line">    steps:</span><br><span class="line">      - name: Deploy to GitHub Pages</span><br><span class="line">        id: deployment</span><br><span class="line">        uses: actions/deploy-pages@v4 # 官方action</span><br></pre></td></tr></table></figure>
+
+<p>在本地进行git pull后，在client目录下的vite.config.js里面添加这行代码base:’&#x2F;{仓库名}&#x2F;‘,package.json里面添加这行代码”homepage”: “<a href="https://kkzyu.github.io/%7B%E4%BB%93%E5%BA%93%E5%90%8D%7D%22%E3%80%82">https://kkzyu.github.io/{仓库名}&quot;。</a></p>
+<p>再到github的setting下进行以下操作：</p>
+<ul>
+<li>pages下的source选择github actions；</li>
+<li>environment下检查是否存在github-pages，点击进入查看是否有master这个分支；</li>
+<li>actions的general下，勾选read and write permission以及Allow GitHub Actions to create and approve pull requests。</li>
+</ul>
+<p>在部署last1km的时候出现了很多路径上的问题，导致信息无法正常显示，这主要是因为在vite中把base改成了&#x2F;last1km&#x2F;后在解析的时候路径发生了变化，这也是写代码的时候不太规范导致的问题。</p>
+<p>以chatpage.vue为例，下面是对应的解决办法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 定义baseurl为vite下记录的url</span><br><span class="line">const BASE_URL = import.meta.env.BASE_URL;</span><br><span class="line"># 由于在json文件里面保留了/对应的public路径，所以这里需要对路径格式进行修改，由于baseurl的last1km后面还跟着一个/，所以需要去掉其中的一个/</span><br><span class="line">const resolveAssetPath = (relativePath) =&gt; &#123;</span><br><span class="line">  if (!relativePath) return undefined;</span><br><span class="line">  let path = relativePath;</span><br><span class="line">  if (BASE_URL.endsWith(&#x27;/&#x27;) &amp;&amp; path.startsWith(&#x27;/&#x27;)) &#123;</span><br><span class="line">    path = path.substring(1);</span><br><span class="line">  &#125; else if (!BASE_URL.endsWith(&#x27;/&#x27;) &amp;&amp; !path.startsWith(&#x27;/&#x27;)) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  return `$&#123;BASE_URL&#125;$&#123;path&#125;`;</span><br><span class="line">&#125;;</span><br><span class="line"># 这个可以直接放到stores下用pinia管理，并导入</span><br><span class="line"># ......</span><br><span class="line"># 对应的在获取数据时也要进行以下更改</span><br><span class="line">    const fetchPath = &#x27;data/messages.json&#x27;; // Path relative to public directory</span><br><span class="line">    const response = await fetch(`$&#123;BASE_URL&#125;$&#123;fetchPath&#125;`);</span><br><span class="line">    const riderData = currentChatData.rider ? &#123;</span><br><span class="line">        ...currentChatData.rider,</span><br><span class="line">        // chatInfo.rider.avatar 的值如 &quot;/images/avatar1.jpg&quot;</span><br><span class="line">        // resolveAssetPath会处理它，变成 &quot;/last1km/images/avatar1.jpg&quot;</span><br><span class="line">        avatar: currentChatData.rider.avatar ? resolveAssetPath(currentChatData.rider.avatar) : undefined</span><br><span class="line">      &#125; : null;</span><br></pre></td></tr></table></figure>
+
+
         
       </div>
 
@@ -263,269 +279,49 @@
     </div>
     
      
-    <a class="right-panel  non-pic  "
-      
-      href="/blog/2025/05/22/github-actions/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
   </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/blog/2025/04/29/%E4%BB%93%E5%BA%93%E8%BF%81%E7%A7%BB/"
+      title="仓库迁移"
+     >
+
+    <p class="title-text">
+      
+        仓库迁移
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
   
 </article>
 
 
-
-
-
-
-   
-
-
-<article id="post-仓库迁移" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
   
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/blog/2025/04/29/%E4%BB%93%E5%BA%93%E8%BF%81%E7%A7%BB/">仓库迁移</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-29T03:00:26.000Z" itemprop="datePublished">2025-04-29</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            395 words 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/web%E5%89%8D%E7%AB%AF/" rel="tag">web前端</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              仓库迁移与合并
-先删除现有远程仓库1git remote remove githu
-添加新仓库为远程仓库1git remote add github git@github.com:kkzyu/kkzyu.github.io.git
-验证远程仓库1git remote -v
-获取仓库2代码1git fetch github
-合并代码（保留双方历史）1git merge github/main --allow-unrelated-histories
-解决冲突（重点关注以下文件）
-
-
-用编辑器处理冲突的.gitignore、package.json等
-保留Gitee仓库的.gitignore规则
-
-
-提交变更123git add .git commit -m &quot;迁移完成：包含仓库2源码及网址文件&quot;git push origin main
-验证代码完整性1npm install &amp;&amp; npm run dev # 确保能正常启动开发服务器
-
-
-            
-          </div>
-        
-      </div>
-
-         
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <div id="comment-card" class="comment-card">
+    <div class="main-title-bar">
+      <div class="main-title-dot"></div>
+      <div class="main-title">Comments </div>
     </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/blog/2025/04/29/%E4%BB%93%E5%BA%93%E8%BF%81%E7%A7%BB/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
+    <div id="vcomments"></div>
   </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-pinia重构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/blog/2025/04/28/pinia%E9%87%8D%E6%9E%84/">pinia重构</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-28T14:05:46.000Z" itemprop="datePublished">2025-04-28</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.1k words 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/web%E5%89%8D%E7%AB%AF/" rel="tag">web前端</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Pinia 重构过程记录重构步骤
-安装必要依赖
-1npm install pinia
-
-创建 Pinia Store
-12345678910111213141516171819202122232425// stores/cvStore.jsimport &#123; defineStore &#125; from &#x27;pinia&#x27;import &#123; message &#125; from &#x27;ant-design-vue&#x27;import cvDataStructure from &#x27;@/assets/data/cv-info.json&#x27;import html2canvas from &#x27;html2canvas&#x27;import jsPDF from &#x27;jspdf&#x27;export const useCvStore = defineStore(&#x27;cv&#x27;, &#123;  state: () =&gt; (&#123;    currentLang: &#x27;cn&#x2...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/blog/2025/04/28/pinia%E9%87%8D%E6%9E%84/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/blog/2025/04/12/hello-world/">hexo blog部署记录</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-12T08:00:00.000Z" itemprop="datePublished">2025-04-12</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2.3k words 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/web%E5%89%8D%E7%AB%AF/" rel="tag">web前端</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              2025年4月28日，第一次尝试把hexo集成到个人主页中，记录一下部署过程，以及后期的更新和测试步骤。
-部署过程创建hexo项目hexo是github上一个开源的博客模板，首先可以在新目录下创建一个hexo项目，然后进入该目录，执行如下命令：
-1$ npm install -g hexo-cli
-
-接着进行一个初始化，进行初始化之后会创建一个新的hexo项目，自动克隆hexo-start和landscape主题：
-123$ hexo init myblog$ cd myblog$ npm install
-初始化之后，项目文件夹如下所示：.├── _config.yml（网站配置文件，以下的修改调整主要在这个文件下进行）├── package.json├── scaffolds├── source|   ├── _drafts|   └── _posts└── themes
-本地测试默认地址是http://localhost:4000/
-1$ hexo server
-
-选择主题hexo默认的主题比较简约，但它提供了非常多的模板，在https://hexo.io/themes/上可...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/blog/2025/04/12/hello-world/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
+  <script>
+      new Valine({"enable":true,"appId":"XFCQYSkCRKnBvOkCNwwyqstI-MdYXbMMI","appKey":"4bzESEecmkEv7kba7m0CZGHE","placeholder":"talk to ido!","pageSize":10,"highlight":true,"serverURLs":["https://xfcqyskc.api.lncldglobal.com"],"el":"#vcomments"});
+  </script>
 
 
 
