@@ -1,8 +1,7 @@
 ---
-title: day1-react-learning
-date: 2025-07-08 09:59:26
+title: day1_react_learning
+date: 2025-07-08 10:09:50
 tags: [react, web前端]
-
 
 ---
 今天看了rdp-fe这个代码库。先从route文件看起，找到一个页面就寻到这个文件下，然后根据导入一路地查看，一直到把这个页面的内容业务技术等完全搞明白，，
