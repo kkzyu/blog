@@ -1,5 +1,5 @@
 ---
-title: day1_react_learning
+title: day1-react-learning
 date: 2025-07-08 10:09:50
 tags: [react, web前端]
 
