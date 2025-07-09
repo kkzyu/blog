@@ -122,9 +122,9 @@ const routes = [{
 在本地对myblog进行了修改后，网页并不会自动更新，需要进行一下操作才可在网页中观察到更新后内容：
 
 ``` bash
-hexo clean 
-hexo generate
-hexo deploy
+npx hexo clean
+npx hexo generate
+npx hexo deploy
 #可选：将源码变更推送到main分支备份
 git add .
 git commit -m "更新博客内容"

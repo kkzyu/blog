@@ -28,7 +28,7 @@
 <meta property="og:description" content="2025年4月28日，第一次尝试把hexo集成到个人主页中，记录一下部署过程，以及后期的更新和测试步骤。 部署过程创建hexo项目hexo是github上一个开源的博客模板，首先可以在新目录下创建一个hexo项目，然后进入该目录，执行如下命令： 1$ npm install -g hexo-cli  接着进行一个初始化，进行初始化之后会创建一个新的hexo项目，自动克隆hexo-start和lan">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-12T08:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-08T01:44:29.143Z">
+<meta property="article:modified_time" content="2025-07-09T03:31:34.957Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web前端">
 <meta name="twitter:card" content="summary">
@@ -297,7 +297,7 @@
 
 <p>等待几分钟之后，即可在vue项目中看到博客链接，点击后会在新标签页打开博客。</p>
 <h2 id="后期更新和测试"><a href="#后期更新和测试" class="headerlink" title="后期更新和测试"></a>后期更新和测试</h2><h3 id="更新博客"><a href="#更新博客" class="headerlink" title="更新博客"></a>更新博客</h3><p>在本地对myblog进行了修改后，网页并不会自动更新，需要进行一下操作才可在网页中观察到更新后内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment">#可选：将源码变更推送到main分支备份</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;更新博客内容&quot;</span></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npx hexo clean</span><br><span class="line">npx hexo generate</span><br><span class="line">npx hexo deploy</span><br><span class="line"><span class="comment">#可选：将源码变更推送到main分支备份</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;更新博客内容&quot;</span></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
 
 <p>如果想要现在本地进行测试可以执行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>

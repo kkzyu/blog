@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="今天看了rdp-fe这个代码库。先从route文件看起，找到一个页面就寻到这个文件下，然后根据导入一路地查看，一直到把这个页面的内容业务技术等完全搞明白，，今天就看了myapp这一个界面的，因为还不熟悉react的框架，就多看了一会，对一些函数，包括前后端的交互也有了更深入的了解。  request：私人助理，帮助处理和后端服务器通信时的杂事： 自动添加基础url：如 &#x2F;app2&amp;#x2">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://kkzyu.github.io/blog/day1-react-learning-1.png">
-<meta property="og:image" content="https://kkzyu.github.io/blog/day1-react-learning-2.png">
+<meta property="og:image" content="https://kkzyu.github.io/blog/day1_react_learning-1.png">
+<meta property="og:image" content="https://kkzyu.github.io/blog/day1_react_learning-2.png">
 <meta property="article:published_time" content="2025-07-08T02:09:50.000Z">
-<meta property="article:modified_time" content="2025-07-08T02:11:01.410Z">
+<meta property="article:modified_time" content="2025-07-09T05:21:17.357Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="react">
 <meta property="article:tag" content="web前端">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kkzyu.github.io/blog/day1-react-learning-1.png">
+<meta name="twitter:image" content="https://kkzyu.github.io/blog/day1_react_learning-1.png">
   
     <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -283,7 +283,7 @@
 <li>render：自定义这一列的单元格应该如何显示，比如点名册的年龄一列，如果是大等于18则显示已成年，小于则显示未成年。</li>
 <li>record：相当于班级点名册中被点名（渲染到）的那个同学的所有信息（姓名，性别，年龄等等）</li>
 <li>前后端交互逻辑：<ol>
-<li>app.ts里面给出了所有的用于前后端交互的api函数fun，export意味着这个函数可以被项目中其他文件调用（但并不关心这个函数的格式是否适合被所有的文件调用）。<br> <img src="/blog/day1-react-learning-1.png" alt="alt text"></li>
+<li>app.ts里面给出了所有的用于前后端交互的api函数fun，export意味着这个函数可以被项目中其他文件调用（但并不关心这个函数的格式是否适合被所有的文件调用）。<br> <img src="/blog/day1_react_learning-1.png" alt="alt text"></li>
 </ol>
 <ul>
 <li>括号里面是接受经2转换后的数据B（注意这里不进行转换，只规定了需要进行传送的数据，具体的转换需要通过2来完成）；</li>
@@ -291,7 +291,7 @@
 <li>({})里面可能包括请求的后端url，请求方法，以及附加的传给后端的查询参数B。</li>
 </ul>
 <ol start="2">
-<li>由于1中app.ts里面封装的函数fun并不适合被所有的文件调用，所以在一些特定场景会通过编写一个桥梁函数来实现“翻译”的作用，即把A转换成后端能够看懂的数据格式B。<br> <img src="/blog/day1-react-learning-2.png" alt="alt text"></li>
+<li>由于1中app.ts里面封装的函数fun并不适合被所有的文件调用，所以在一些特定场景会通过编写一个桥梁函数来实现“翻译”的作用，即把A转换成后端能够看懂的数据格式B。<br> <img src="/blog/day1_react_learning-2.png" alt="alt text"></li>
 </ol>
 </li>
 <li>箭头函数：<ul>

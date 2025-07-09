@@ -15,11 +15,11 @@ tags: [react, web前端]
 3. record：相当于班级点名册中被点名（渲染到）的那个同学的所有信息（姓名，性别，年龄等等）
 4. 前后端交互逻辑：
     1. app.ts里面给出了所有的用于前后端交互的api函数fun，export意味着这个函数可以被项目中其他文件调用（但并不关心这个函数的格式是否适合被所有的文件调用）。
-    ![alt text](day1-react-learning-1.png)
+    ![alt text](day1_react_learning-1.png)
     - 括号里面是接受经2转换后的数据B（注意这里不进行转换，只规定了需要进行传送的数据，具体的转换需要通过2来完成）；
     - return request<...>(...)指示了从后端期望返回的数据格式C。
     - ({})里面可能包括请求的后端url，请求方法，以及附加的传给后端的查询参数B。
     2. 由于1中app.ts里面封装的函数fun并不适合被所有的文件调用，所以在一些特定场景会通过编写一个桥梁函数来实现“翻译”的作用，即把A转换成后端能够看懂的数据格式B。
-    ![alt text](day1-react-learning-2.png)
+    ![alt text](day1_react_learning-2.png)
 5. 箭头函数：
     - const 函数名 = async(传入的参数) =>{函数体,要用return指定返回值};
