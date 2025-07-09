@@ -252,7 +252,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.7k words 
+            4.8k words 
           </div>
         </div>
         
@@ -264,20 +264,16 @@
           <div class="truncate-text">
             
               用模拟数据写了一个作业管理的详情页，react可以用mock拦截前端发出去的请求，所以可以在这里放置模拟数据。给了一个类似这样的界面：
+一、 页面结构设计首先确定了把整个页面拆分成三个组件（上basicinfocard下documenttablecard），还有一个根组件jobdetail来负责获取jobid，管理整体的加载状态并组织子组件的渲染。
 
-首先确定了把整个页面拆分成三个组件（上basicinfocard下documenttablecard），还有一个根组件jobdetail来负责获取jobid，管理整体的加载状态并组织子组件的渲染。
-接着是和后端的交互：
+BasicInfoCard：用于展示顶部的基础信息。
+DocumentTableCard：用于展示下方的文档列表。
+JobDetail：作为根组件，负责从 URL 获取 jobId，管理整体的加载状态，并组织上述子组件的渲染。
 
-
-用useEffect Hook，在组件挂载时根据传入的jobid调用service文件夹下job.ts中定义的接口函数getJobDocuments来从后端异步获取文档列表数据。
-使用useState创建dataSource状态，用于存储从后端获取的完整文档列表。获取到数据之后，对每条记录增加一个唯一的key属性来满足protable的要求。protable功能确实挺丰富，部署起来也挺快捷的。这里先把它稍微进行了一下更改再拿来用，学习文档：https://procomponents.ant.design/components/table
-
-
-protable的核心交互功能：
-
-
-行选择和批量下载：
-创建了一个selected...
+二、 数据交互与状态管理接着是和后端的交互：
+1. 异步获取数据在 JobDetail 组件中，使用了 useEffect Hook。当组件首次加载或 jobId 变化时，它会自动调用 service/job.ts 中定义的接口函数 getJobDocuments，从后端异步获取文档列表数据。
+2. 存储和处理数据
+使用useState创建dataSource状态，用于存储从后端获取的完整文档列表。获取到数...
             
           </div>
         

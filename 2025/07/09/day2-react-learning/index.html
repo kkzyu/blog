@@ -20,16 +20,16 @@
   <link rel="preload" href="/blog/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/blog/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="用模拟数据写了一个作业管理的详情页，react可以用mock拦截前端发出去的请求，所以可以在这里放置模拟数据。给了一个类似这样的界面：  首先确定了把整个页面拆分成三个组件（上basicinfocard下documenttablecard），还有一个根组件jobdetail来负责获取jobid，管理整体的加载状态并组织子组件的渲染。 接着是和后端的交互：   用useEffect Hook，在组件">
+  <meta name="description" content="用模拟数据写了一个作业管理的详情页，react可以用mock拦截前端发出去的请求，所以可以在这里放置模拟数据。给了一个类似这样的界面： 一、 页面结构设计首先确定了把整个页面拆分成三个组件（上basicinfocard下documenttablecard），还有一个根组件jobdetail来负责获取jobid，管理整体的加载状态并组织子组件的渲染。  BasicInfoCard：用于展示顶部的基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="day2-react-learning">
 <meta property="og:url" content="https://kkzyu.github.io/blog/2025/07/09/day2-react-learning/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="用模拟数据写了一个作业管理的详情页，react可以用mock拦截前端发出去的请求，所以可以在这里放置模拟数据。给了一个类似这样的界面：  首先确定了把整个页面拆分成三个组件（上basicinfocard下documenttablecard），还有一个根组件jobdetail来负责获取jobid，管理整体的加载状态并组织子组件的渲染。 接着是和后端的交互：   用useEffect Hook，在组件">
+<meta property="og:description" content="用模拟数据写了一个作业管理的详情页，react可以用mock拦截前端发出去的请求，所以可以在这里放置模拟数据。给了一个类似这样的界面： 一、 页面结构设计首先确定了把整个页面拆分成三个组件（上basicinfocard下documenttablecard），还有一个根组件jobdetail来负责获取jobid，管理整体的加载状态并组织子组件的渲染。  BasicInfoCard：用于展示顶部的基础">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://kkzyu.github.io/blog/day2-react-learning-1.png">
 <meta property="article:published_time" content="2025-07-09T02:04:27.000Z">
-<meta property="article:modified_time" content="2025-07-09T03:25:10.876Z">
+<meta property="article:modified_time" content="2025-07-09T03:47:23.036Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="react">
 <meta property="article:tag" content="web前端">
@@ -261,7 +261,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.7k words 
+            4.8k words 
           </div>
         </div>
         
@@ -271,39 +271,74 @@
       <div class="e-content article-entry" itemprop="articleBody">
         
           <p>用模拟数据写了一个作业管理的详情页，react可以用mock拦截前端发出去的请求，所以可以在这里放置模拟数据。<br>给了一个类似这样的界面：<br><img src="/blog/day2-react-learning-1.png" alt="alt text"></p>
-<ol>
-<li>首先确定了把整个页面拆分成三个组件（上basicinfocard下documenttablecard），还有一个根组件jobdetail来负责获取jobid，管理整体的加载状态并组织子组件的渲染。</li>
-<li>接着是和后端的交互：</li>
-</ol>
+<h3 id="一、-页面结构设计"><a href="#一、-页面结构设计" class="headerlink" title="一、 页面结构设计"></a><strong>一、 页面结构设计</strong></h3><p>首先确定了把整个页面拆分成三个组件（上basicinfocard下documenttablecard），还有一个根组件jobdetail来负责获取jobid，管理整体的加载状态并组织子组件的渲染。</p>
 <ul>
-<li>用useEffect Hook，在组件挂载时根据传入的jobid调用service文件夹下job.ts中定义的接口函数getJobDocuments来从后端异步获取文档列表数据。</li>
+<li><code>BasicInfoCard</code>：用于展示顶部的基础信息。</li>
+<li><code>DocumentTableCard</code>：用于展示下方的文档列表。</li>
+<li><code>JobDetail</code>：作为根组件，负责从 URL 获取 <code>jobId</code>，管理整体的加载状态，并组织上述子组件的渲染。</li>
+</ul>
+<h3 id="二、-数据交互与状态管理"><a href="#二、-数据交互与状态管理" class="headerlink" title="二、 数据交互与状态管理"></a><strong>二、 数据交互与状态管理</strong></h3><p>接着是和后端的交互：</p>
+<h4 id="1-异步获取数据"><a href="#1-异步获取数据" class="headerlink" title="1. 异步获取数据"></a><strong>1. 异步获取数据</strong></h4><p>在 <code>JobDetail</code> 组件中，使用了 <code>useEffect</code> Hook。当组件首次加载或 <code>jobId</code> 变化时，它会自动调用 <code>service/job.ts</code> 中定义的接口函数 <code>getJobDocuments</code>，从后端异步获取文档列表数据。</p>
+<h4 id="2-存储和处理数据"><a href="#2-存储和处理数据" class="headerlink" title="2. 存储和处理数据"></a><strong>2. 存储和处理数据</strong></h4><ul>
 <li>使用useState创建dataSource状态，用于存储从后端获取的完整文档列表。获取到数据之后，对每条记录增加一个唯一的key属性来满足protable的要求。<br><em>protable功能确实挺丰富，部署起来也挺快捷的。这里先把它稍微进行了一下更改再拿来用，学习文档：<a target="_blank" rel="noopener" href="https://procomponents.ant.design/components/table">https://procomponents.ant.design/components/table</a></em></li>
 </ul>
-<ol start="3">
-<li>protable的核心交互功能：</li>
-</ol>
-<ul>
-<li>行选择和批量下载：<ol>
-<li>创建了一个selectedRowKeys状态数组用来存放所有被勾选的行的key。</li>
-<li>该列用render的方法返回一个<Checkbox>，其勾选状态与selectedRowKeys双向绑定。</li>
-<li>该列的 title 属性也返回一个 <Checkbox>，作为“全选&#x2F;取消全选”的控制器。其 checked 和 indeterminate (半选) 状态根据 selectedRowKeys 和 dataSource 的长度动态计算，实现了精确的全选逻辑。</li>
-</ol>
-</li>
-<li>在名称列，将其渲染为一个 <Button type="link">，使其外观像一个可点击的链接。用<Modal> 窗口来显示日志内容（用setLogModalVisible来控制）。</li>
-<li>把protable的搜索功能取消（因为组件样式的自定义改动空间不大），自定义了一个&lt;Input.Search&gt; 组件。其 onSearch 事件会更新 searchText 状态。创建一个派生变量 filteredDataSource。它通过对原始的 dataSource 数组使用 .filter() 方法，根据 searchText 的值进行客户端实时过滤。ProTable 的 dataSource 属性直接使用这个过滤后的数据，从而实现了搜索功能。</li>
-</ul>
-<p>学习到的新知识：</p>
+<h3 id="三、-ProTable-核心功能实现"><a href="#三、-ProTable-核心功能实现" class="headerlink" title="三、 ProTable 核心功能实现"></a><strong>三、 ProTable 核心功能实现</strong></h3><h4 id="1-行选择与批量下载"><a href="#1-行选择与批量下载" class="headerlink" title="1. 行选择与批量下载"></a><strong>1. 行选择与批量下载</strong></h4><pre><code>1. 创建了一个selectedRowKeys状态数组用来存放所有被勾选的行的key。
+2. 该列用render的方法返回一个&lt;Checkbox&gt;，其勾选状态与selectedRowKeys双向绑定。
+3. 该列的 title 属性也返回一个 &lt;Checkbox&gt;，作为“全选/取消全选”的控制器。其 checked 和 indeterminate (半选) 状态根据 selectedRowKeys 和 dataSource 的长度动态计算，实现了精确的全选逻辑。
+</code></pre>
+<h4 id="2-点击查看日志"><a href="#2-点击查看日志" class="headerlink" title="2. 点击查看日志"></a><strong>2. 点击查看日志</strong></h4><p>在名称列，将其渲染为一个<code>&lt;Button type=&quot;link&quot;&gt;</code>，使其外观像一个可点击的链接。点击后，通过更新 <code>logModalVisible</code> 状态来控制 <code>&lt;Modal&gt;</code> 弹窗的显示与隐藏，从而展示日志内容。</p>
+<h4 id="3-自定义搜索"><a href="#3-自定义搜索" class="headerlink" title="3. 自定义搜索"></a><strong>3. 自定义搜索</strong></h4><p>由于 ProTable 自带搜索的自定义空间有限，我选择实现一个自定义的搜索功能：</p>
 <ol>
-<li>Hooks：<ol>
-<li>useState：相当于内部记忆（可修改的便签纸），用于为函数组件添加状态。<br> 比如const [logModalVisible（便签纸）, setLogModalVisible（专用于修改便签纸的笔）] &#x3D; useState(false)，其中logModalVisible的状态就是false。我们可以并只能通过调用setLogModalVisible(true)来更新便签纸的状态。<br> &amp; useParams：相当于外部指令（门牌号），来自于网页的url地址，而不是内部的组件。它只能读取而无法控制。</li>
-<li>useEffect：用于在特定条件下，自动执行一些份外的任务（比如和外界沟通）。类似于一条如果就的指令。比如说const { jobId } &#x3D; useParams();就相当于看了一眼网页地址的门牌号，但是无法修改门牌。<br> 比如useEffect(() &#x3D;&gt; { fetchData(); }, [jobId]);<br> 其中fetchData()意思是去服务器中拿回文件列表，jobid就是触发的ID（如果这个id发生了改变就去服务器拿回文件列表，但是如果还是同一个id的话就不需要跑一趟，用现有的就行。）<br> 注意：①如果指令的触发条件是[]，意思即使开机后只执行一次以后都不管了；②如果没有触发条件，意思是任何一点风吹草动都要去执行这个指令。</li>
-<li>useContext：相当于公共广播系统。顶层组件可以通过广播发布信息，比如广播“当前主题：夜间模式”，那么所有组件（深层的也可以）只要打开收音机都会听到这个信息。</li>
-<li>useMemo：用于记住一个复杂的计算结果（重在结果），避免重复计算。</li>
-<li>useCallback：用于记住一个计算公式（重在技能）。这在传递给子组件时非常有用。</li>
-<li>useRef：相当于多功能工具箱，无论怎么刷新箱子里的东西都是同一个不会丢失。修改箱子里的东西也不会触发重新渲染。</li>
+<li>在表格外部放置一个 <code>&lt;Input.Search&gt;</code> 组件。</li>
+<li>监听其 <code>onSearch</code> 事件，并将输入值更新到 <code>searchText</code> 状态。</li>
+<li>创建一个派生状态 <code>filteredDataSource</code>。它通过对原始 <code>dataSource</code> 数组使用 <code>.filter()</code> 方法，根据 <code>searchText</code> 的值进行客户端实时过滤。</li>
+<li>将 <code>ProTable</code> 的 <code>dataSource</code> 属性直接指向这个过滤后的 <code>filteredDataSource</code>，从而实现了自定义搜索。</li>
+</ol>
+<h3 id="四、-React-Hooks-学习总结"><a href="#四、-React-Hooks-学习总结" class="headerlink" title="四、 React Hooks 学习总结"></a><strong>四、 React Hooks 学习总结</strong></h3><h4 id="1-useState：组件的记忆"><a href="#1-useState：组件的记忆" class="headerlink" title="1. useState：组件的记忆"></a><strong>1. <code>useState</code>：组件的记忆</strong></h4><ul>
+<li>相当于内部记忆（可修改的便签纸），用于为函数组件添加状态。</li>
+<li>比如const [logModalVisible（便签纸）, setLogModalVisible（专用于修改便签纸的笔）] &#x3D; useState(false)，其中logModalVisible的状态就是false。我们可以并只能通过调用setLogModalVisible(true)来更新便签纸的状态。<ul>
+<li><strong>示例</strong>：  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 声明一个名为 &quot;count&quot; 的 state 变量，初始化为 0</span></span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>You clicked &#123;count&#125; times<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;/* 调用 setCount 来更新 state */&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(count + 1)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">        Click me</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>与 <code>useParams</code> 的区别</strong>：相当于外部指令（门牌号），来自于网页的url地址，而不是内部的组件。它只能读取而无法控制。比如说const { jobId } &#x3D; useParams();就相当于看了一眼网页地址的门牌号，但是无法修改门牌。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-useEffect：处理副作用"><a href="#2-useEffect：处理副作用" class="headerlink" title="2. useEffect：处理副作用"></a><strong>2. <code>useEffect</code>：处理副作用</strong></h4><ul>
+<li><strong>作用</strong>：让函数组件能够在特定时机（如渲染后、依赖变化后）执行一些份外的事情（比如去服务器拿东西），例如数据获取、DOM 操作、设置订阅等。</li>
+<li><strong>类比</strong>：它是一条“如果…就…”的指令。<code>useEffect(() =&gt; &#123; fetchData(); &#125;, [jobId]);</code> 意味着：“如果 <code>jobId</code> 变了，就去服务器获取一次新数据”。</li>
+<li><strong>依赖数组说明</strong>：<ul>
+<li><code>[dep1, dep2]</code>: 依赖项 <code>dep1</code> 或 <code>dep2</code> 发生变化时执行。</li>
+<li><code>[]</code> (空数组): 只在组件<strong>首次挂载</strong>后执行一次。</li>
+<li><strong>不提供</strong>依赖数组: <strong>每次组件渲染后</strong>都会执行。<br>比如useEffect(() &#x3D;&gt; { fetchData(); }, [jobId]);<br>其中fetchData()意思是去服务器中拿回文件列表，jobid就是触发的ID（如果这个id发生了改变就去服务器拿回文件列表，但是如果还是同一个id的话就不需要跑一趟，用现有的就行。）<br>注意：①如果指令的触发条件是[]，意思即使开机后只执行一次以后都不管了；②如果没有触发条件，意思是任何一点风吹草动都要去执行这个指令。</li>
+</ul>
+</li>
+<li><strong>示例</strong>：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">UserInfo</span>(<span class="params">&#123; userId &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [user, setUser] = <span class="title function_">useState</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 当 userId 变化时，执行这个副作用</span></span><br><span class="line">    <span class="title function_">fetch</span>(<span class="string">`/api/users/<span class="subst">$&#123;userId&#125;</span>`</span>)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> res.<span class="title function_">json</span>())</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function"><span class="params">data</span> =&gt;</span> <span class="title function_">setUser</span>(data));</span><br><span class="line">  &#125;, [userId]); <span class="comment">// 依赖项是 userId</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!user) <span class="keyword">return</span> <span class="string">&#x27;Loading...&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;user.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3-useContext：全局广播"><a href="#3-useContext：全局广播" class="headerlink" title="3. useContext：全局广播"></a><strong>3. <code>useContext</code>：全局广播</strong></h4><ul>
+<li>相当于公共广播系统。顶层组件可以通过广播发布信息，比如广播“当前主题：夜间模式”，那么所有组件（深层的也可以）只要打开收音机都会听到这个信息。</li>
+<li><strong>示例</strong>：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 创建 Context</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ThemeContext</span> = <span class="title class_">React</span>.<span class="title function_">createContext</span>(<span class="string">&#x27;light&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 在顶层组件使用 Provider 提供 value</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">ThemeContext.Provider</span> <span class="attr">value</span>=<span class="string">&quot;dark&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Toolbar</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ThemeContext.Provider</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 在子组件中使用 useContext 消费 value</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">ThemedButton</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> theme = <span class="title function_">useContext</span>(<span class="title class_">ThemeContext</span>); <span class="comment">// theme 的值会是 &quot;dark&quot;</span></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&#123;theme&#125;</span>&gt;</span>I am a &#123;theme&#125; button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="4-useMemo：记住计算结果"><a href="#4-useMemo：记住计算结果" class="headerlink" title="4. useMemo：记住计算结果"></a><strong>4. <code>useMemo</code>：记住计算结果</strong></h4><ul>
+<li>用于记住一个复杂的计算结果（重在<strong>结果</strong>），避免重复计算。</li>
+<li><strong>示例</strong>：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ExpensiveComponent</span>(<span class="params">&#123; list, filter &#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// 只有当 list 或 filter 变化时，才会重新执行 filter 操作</span></span><br><span class="line">  <span class="keyword">const</span> visibleList = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Filtering list...&#x27;</span>); <span class="comment">// 这个 log 不会频繁触发</span></span><br><span class="line">    <span class="keyword">return</span> list.<span class="title function_">filter</span>(<span class="function"><span class="params">item</span> =&gt;</span> item.<span class="title function_">includes</span>(filter));</span><br><span class="line">  &#125;, [list, filter]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;/* ... render visibleList ... */&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="5-useCallback：记住函数本身"><a href="#5-useCallback：记住函数本身" class="headerlink" title="5. useCallback：记住函数本身"></a><strong>5. <code>useCallback</code>：记住函数本身</strong></h4><p>用于记住一个计算公式（重在<strong>函数实例</strong>）。这在传递给子组件时非常有用。</p>
+<ul>
+<li><strong>示例</strong>：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Parent</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 使用 useCallback，这个 handleClick 函数实例在重渲染时保持不变</span></span><br><span class="line">  <span class="keyword">const</span> handleClick = <span class="title function_">useCallback</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Button clicked!&#x27;</span>);</span><br><span class="line">  &#125;, []); <span class="comment">// 空依赖数组意味着函数永不改变</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Child</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// React.memo 可以防止在 props 不变时重渲染子组件</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Child</span> = <span class="title class_">React</span>.<span class="title function_">memo</span>(<span class="function">(<span class="params">&#123; onClick &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Child rendered&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onClick&#125;</span>&gt;</span>Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="6-useRef：多功能工具箱"><a href="#6-useRef：多功能工具箱" class="headerlink" title="6. useRef：多功能工具箱"></a><strong>6. <code>useRef</code>：多功能工具箱</strong></h4><ul>
+<li>相当于多功能工具箱，无论怎么刷新箱子里的东西都是同一个不会丢失。修改箱子里的东西也不会触发重新渲染。</li>
+<li><strong>作用</strong>：返回一个可变的 ref 对象，其 <code>.current</code> 属性被初始化为传入的参数。它可以在多次渲染之间保持不变。</li>
+<li><strong>特点</strong>：修改 <code>ref.current</code> <strong>不会</strong>触发组件的重新渲染。</li>
+<li><strong>常见用途</strong>：<ol>
+<li><strong>访问 DOM 元素</strong>：直接操作 DOM，如聚焦输入框。</li>
+<li><strong>存储可变值</strong>：存储一个与渲染无关的值，类似于实例变量。</li>
 </ol>
 </li>
-</ol>
+<li><strong>示例</strong>：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TextInputWithFocusButton</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> inputEl = <span class="title function_">useRef</span>(<span class="literal">null</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">onButtonClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="comment">// `current` 指向已挂载到 DOM 上的 text input 元素</span></span><br><span class="line">    inputEl.<span class="property">current</span>.<span class="title function_">focus</span>();</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputEl&#125;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onButtonClick&#125;</span>&gt;</span>Focus the input<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 
         
       </div>
