@@ -141,7 +141,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">Tags</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/web%E5%89%8D%E7%AB%AF/" rel="tag">web前端</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/react/" rel="tag">react</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/web%E5%89%8D%E7%AB%AF/" rel="tag">web前端</a></li></ul>
     </div>
   </div>
 
@@ -152,6 +152,11 @@
     <div class="widget">
       <h3 class="widget-title">Archives</h3>
       
+      
+        <a class="archive-link" href="/blog/archives/2025/07 ">
+          July 2025 
+          <div class="archive-count">2 </div>
+        </a>
       
         <a class="archive-link" href="/blog/archives/2025/05 ">
           May 2025 
@@ -174,6 +179,18 @@
       <h3 class="widget-title">Recent Posts</h3>
       <ul>
         
+          <a class="recent-link" href="/blog/2025/07/09/day2-react-learning/" title="day2-react-learning" >
+            <div class="recent-link-text">
+              day2-react-learning
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/blog/2025/07/08/day1-react-learning/" title="day1_react_learning" >
+            <div class="recent-link-text">
+              day1_react_learning
+            </div>
+          </a>
+        
           <a class="recent-link" href="/blog/2025/05/22/github-actions/" title="github-actions" >
             <div class="recent-link-text">
               github-actions
@@ -192,12 +209,6 @@
             </div>
           </a>
         
-          <a class="recent-link" href="/blog/2025/04/12/hello-world/" title="hexo blog部署记录" >
-            <div class="recent-link-text">
-              hexo blog部署记录
-            </div>
-          </a>
-        
       </ul>
     </div>
   </div>
@@ -208,6 +219,174 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="posts-day2-react-learning" class="h-entry article article-type-posts" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/blog/2025/07/09/day2-react-learning/">day2-react-learning</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-07-09T02:04:27.000Z" itemprop="datePublished">2025-07-09</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.7k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/web%E5%89%8D%E7%AB%AF/" rel="tag">web前端</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              用模拟数据写了一个作业管理的详情页，react可以用mock拦截前端发出去的请求，所以可以在这里放置模拟数据。给了一个类似这样的界面：
+
+首先确定了把整个页面拆分成三个组件（上basicinfocard下documenttablecard），还有一个根组件jobdetail来负责获取jobid，管理整体的加载状态并组织子组件的渲染。
+接着是和后端的交互：
+
+
+用useEffect Hook，在组件挂载时根据传入的jobid调用service文件夹下job.ts中定义的接口函数getJobDocuments来从后端异步获取文档列表数据。
+使用useState创建dataSource状态，用于存储从后端获取的完整文档列表。获取到数据之后，对每条记录增加一个唯一的key属性来满足protable的要求。protable功能确实挺丰富，部署起来也挺快捷的。这里先把它稍微进行了一下更改再拿来用，学习文档：https://procomponents.ant.design/components/table
+
+
+protable的核心交互功能：
+
+
+行选择和批量下载：
+创建了一个selected...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/blog/2025/07/09/day2-react-learning/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-day1-react-learning" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/blog/2025/07/08/day1-react-learning/">day1_react_learning</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-07-08T02:09:50.000Z" itemprop="datePublished">2025-07-08</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            896 words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/web%E5%89%8D%E7%AB%AF/" rel="tag">web前端</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              今天看了rdp-fe这个代码库。先从route文件看起，找到一个页面就寻到这个文件下，然后根据导入一路地查看，一直到把这个页面的内容业务技术等完全搞明白，，今天就看了myapp这一个界面的，因为还不熟悉react的框架，就多看了一会，对一些函数，包括前后端的交互也有了更深入的了解。
+
+request：私人助理，帮助处理和后端服务器通信时的杂事：
+自动添加基础url：如 &#x2F;app2&#x2F;base_info&#x2F;list_by_user，它会自动在前面拼上服务器的域名，如 http://api.example.com。
+统一的认证处理：它会自动从localstorage中读取token，并把它添加到每个请求头header上，这样后端就可以知道你的身份。
+统一的错误处理：它可以捕获错误，也可以理解后端自定义的业务错误。
+统一数据转换：它可以自动处理请求参数的格式（比如转换成json），也可以自动解析从后端返回的json响应。
+
+
+render：自定义这一列的单元格应该如何显示，比如点名册的年龄一列，如果是大等于18则显示已成年，小于则显示未成年。
+record：相...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/blog/2025/07/08/day1-react-learning/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
    
 
 
