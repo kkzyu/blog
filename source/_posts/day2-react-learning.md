@@ -2,7 +2,7 @@
 layout: posts
 title: day2-react-learning
 date: 2025-07-09 10:04:27
-tags: [react, web前端]
+tags: [react, web前端, 实习日记]
 ---
 用模拟数据写了一个作业管理的详情页，react可以用mock拦截前端发出去的请求，所以可以在这里放置模拟数据。
 给了一个类似这样的界面：
