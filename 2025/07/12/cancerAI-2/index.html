@@ -30,8 +30,10 @@
 <meta property="og:image" content="https://kkzyu.github.io/blog/cancerAI-2-1.png">
 <meta property="og:image" content="https://kkzyu.github.io/blog/cancerAI-2-2.png">
 <meta property="article:published_time" content="2025-07-12T13:10:55.000Z">
-<meta property="article:modified_time" content="2025-07-13T04:04:58.800Z">
+<meta property="article:modified_time" content="2025-07-13T04:16:05.143Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="AI医学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://kkzyu.github.io/blog/cancerAI-2-1.png">
   
@@ -269,6 +271,8 @@
           </div>
         </div>
         
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AI%E5%8C%BB%E5%AD%A6/" rel="tag">AI医学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li></ul>
+
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
@@ -323,7 +327,7 @@
 <hr>
 <p><strong>实现方式二：基于互信息的图像配准方案</strong><br>我们不直接比较两张图的“颜色”（像素值），因为它们本来就不同。而是采用一种更聪明的策略——**互信息 (Mutual Information)**。<br>它巧妙地绕开了不同模态图像像素值无法直接比较的难题，转而从统计学的角度寻找最佳对齐，使得该方法具有广泛的适用性和鲁棒性。</p>
 <h4 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h4><ol>
-<li>**选择工具:**使用强大的医学图像处理库 <code>SimpleITK</code> 来执行这个任务。</li>
+<li><strong>选择工具:</strong> 使用强大的医学图像处理库 <code>SimpleITK</code> 来执行这个任务。</li>
 <li><strong>配置配准参数:</strong> 详细设置配准过程中的每一个环节，包括：</li>
 </ol>
 <ul>
@@ -372,10 +376,10 @@
 <ul>
 <li>作用: 这是一种深度学习模型，属于生成对抗网络（GAN）的一种。它可以学习将一种风格的图像转换成另一种风格，例如，将H&amp;E染色的图像“翻译”成看起来像是DAPI染色的图像。</li>
 </ul>
-<p>– 如果H&amp;E和DAPI图像的差异巨大，以至于互信息这种统计方法也难以奏效时，可以先用CycleGAN将H&amp;E图像伪染成“伪DAPI”图像。这样，配准任务就从“多模态”（H&amp;E vs DAPI）变成了“单模态”（伪DAPI vs DAPI），难度会大大降低。</p>
-<ul>
-<li>假设你的“地形图”是黑白素描风格，而“水文图”是彩色油画风格，差异太大导致对齐困难。CycleGAN 就像一位“艺术风格模仿大师”，可以学习素描和油画的风格，然后帮你把黑白的“地形图”重新绘制成一张彩色油画风格的“地形图”。这样你手里就有了两张风格相似的油画，对齐起来就容易多了。</li>
-</ul>
+<blockquote>
+<p>如果H&amp;E和DAPI图像的差异巨大，以至于互信息这种统计方法也难以奏效时，可以先用CycleGAN将H&amp;E图像伪染成“伪DAPI”图像。这样，配准任务就从“多模态”（H&amp;E vs DAPI）变成了“单模态”（伪DAPI vs DAPI），难度会大大降低。</p>
+<p>假设你的“地形图”是黑白素描风格，而“水文图”是彩色油画风格，差异太大导致对齐困难。CycleGAN 就像一位“艺术风格模仿大师”，可以学习素描和油画的风格，然后帮你把黑白的“地形图”重新绘制成一张彩色油画风格的“地形图”。这样你手里就有了两张风格相似的油画，对齐起来就容易多了。</p>
+</blockquote>
 <h4 id="互信息"><a href="#互信息" class="headerlink" title="互信息"></a>互信息</h4><p>它不关心像素值的绝对大小，而是关心像素值分布的统计依赖性。</p>
 <blockquote>
 <p>想象一下，一个只会说中文的人（代表H&amp;E图像）和一个只会说英语的人（代表DAPI图像）被关在一个房间里。他们无法直接沟通（像素值无法直接比较）。<br>但是，如果每次房间里出现“苹果”（H&amp;E图像中出现某个特定范围的像素值）时，那个说英语的人总会说出”Apple”（DAPI图像中对应位置也出现某个特定范围的像素值）。即使你听不懂”Apple”是什么意思，但你观察久了就会发现，“苹果”这个词的出现，可以很好地预测对方会说”Apple”这个词。</p>
