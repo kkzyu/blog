@@ -28,8 +28,10 @@
 <meta property="og:description" content="研发周报 - 2025年7月12日本周我主要负责作业管理详情页面的开发与联调工作，并成功解决了开发过程中遇到的一系列技术挑战，确保了新功能的顺利推进和应用的整体稳定性。 一、本周核心工作成果 基本信息展示： 完成了作业详情页面“基本信息”模块的开发，按照作业信息&#x2F;应用信息&#x2F;用户信息的分类清晰、完整地展示所有和作业管理有关的详情信息。  文档查看与下载：实现了“作业文档”模块的开">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://kkzyu.github.io/blog/week1-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E8%AF%A6%E6%83%85%E9%A1%B5%E5%BC%80%E5%8F%91-1.png">
+<meta property="og:image" content="https://kkzyu.github.io/blog/week1-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E8%AF%A6%E6%83%85%E9%A1%B5%E5%BC%80%E5%8F%91-2.png">
+<meta property="og:image" content="https://kkzyu.github.io/blog/week1-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E8%AF%A6%E6%83%85%E9%A1%B5%E5%BC%80%E5%8F%91-3.png">
 <meta property="article:published_time" content="2025-07-12T12:05:52.000Z">
-<meta property="article:modified_time" content="2025-07-12T13:24:30.579Z">
+<meta property="article:modified_time" content="2025-07-16T09:42:44.457Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web前端">
 <meta property="article:tag" content="实习日记">
@@ -266,7 +268,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            908 words 
+            985 words 
           </div>
         </div>
         
@@ -279,7 +281,7 @@
 <h3 id="一、本周核心工作成果"><a href="#一、本周核心工作成果" class="headerlink" title="一、本周核心工作成果"></a>一、本周核心工作成果</h3><ol>
 <li><p><strong>基本信息展示：</strong> 完成了作业详情页面“基本信息”模块的开发，按照作业信息&#x2F;应用信息&#x2F;用户信息的分类清晰、完整地展示所有和作业管理有关的详情信息。<br><img src="/blog/week1-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E8%AF%A6%E6%83%85%E9%A1%B5%E5%BC%80%E5%8F%91-1.png" alt="alt text"></p>
 </li>
-<li><p><strong>文档查看与下载</strong>：实现了“作业文档”模块的开发，支持通过弹窗在线查看和批量下载作业相关文件，并特别优化了大文件的查看体验。</p>
+<li><p><strong>文档查看与下载</strong>：实现了“作业文档”模块的开发，支持通过弹窗在线查看和批量下载作业相关文件，并特别优化了大文件的查看体验。<br><img src="/blog/week1-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E8%AF%A6%E6%83%85%E9%A1%B5%E5%BC%80%E5%8F%91-2.png" alt="alt text"><br><img src="/blog/week1-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E8%AF%A6%E6%83%85%E9%A1%B5%E5%BC%80%E5%8F%91-3.png" alt="alt text"></p>
 </li>
 </ol>
 <h3 id="二、关键技术问题攻坚与解决方案"><a href="#二、关键技术问题攻坚与解决方案" class="headerlink" title="二、关键技术问题攻坚与解决方案"></a>二、关键技术问题攻坚与解决方案</h3><p>在开发过程中，我遇到并解决了一些具有代表性的技术难题，具体如下：</p>
@@ -290,8 +292,11 @@
 <ul>
 <li><code>BasicInfoCard</code>：展示组件，用于展示基础信息。接收一个名为 <code>data</code> 的 prop，根据 <code>data</code> 的内容渲染出描述列表。</li>
 <li><code>JobDetail</code>：基本信息的容器组件，用于处理逻辑和数据。负责从路由中获取 <code>jobId</code>，调用 API 来获取数据，管理状态，将数据传递给子组件 <code>BasicInfoCard</code>。</li>
-<li><code>DocumentTableCard</code>：用于获取文件列表&#x2F;展示列表&#x2F;搜索&#x2F;批量下载。</li>
-<li><code>FileViewerModal</code>：用于专门负责文件内容的预览功能。</li>
+<li><code>DocumentTableCard</code>：根组件，用于获取文件列表&#x2F;展示列表&#x2F;搜索&#x2F;批量下载。</li>
+<li><code>DocumentTableHeader</code>：文件搜索和操作栏组件。</li>
+<li><code>FileContentModal</code>： 文件内容查看弹窗组件。</li>
+<li><code>DocumentTable</code>：文档表格组件。</li>
+<li><code>useFileOperations</code>：文件操作逻辑。</li>
 </ul>
 </li>
 </ol>
