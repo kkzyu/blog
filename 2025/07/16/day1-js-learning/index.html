@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="false" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/blog/js/color.global.min.js" ></script>
+<script src="/blog/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>day1-js-learning | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/blog/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/blog/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="JS基本数据类型及它们的区别   string number：整数或浮点数。64位双精度浮点数，包含Infinity,-Infinity,NaN。 bigInt：表示大于2^53-1的整数，不能与number直接运算（需显式转换）。 boolean：表示true或false。 null：表示“无”或“空对象指针”，需要通过let obj &#x3D; null来赋值，但是typeof null会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day1-js-learning">
+<meta property="og:url" content="https://kkzyu.github.io/blog/2025/07/16/day1-js-learning/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JS基本数据类型及它们的区别   string number：整数或浮点数。64位双精度浮点数，包含Infinity,-Infinity,NaN。 bigInt：表示大于2^53-1的整数，不能与number直接运算（需显式转换）。 boolean：表示true或false。 null：表示“无”或“空对象指针”，需要通过let obj &#x3D; null来赋值，但是typeof null会">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-16T09:50:58.000Z">
+<meta property="article:modified_time" content="2025-07-19T08:13:24.990Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="面试准备">
+<meta property="article:tag" content="web前端">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/blog/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Hexo </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/blog/">Home</a>
+    
+      <a class="main-nav-link" href="/blog/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/blog/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/blog/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/blog/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/blog/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/blog/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/blog/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/blog/headpic.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Alanni ido </div>
+      <div class="dot"></div>
+      <div class="subtitle">爆ぜろリアル弹けろシナプスバニッシュメント・ディス・ワールド！ </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://x.com/IdoAlanni" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199353377984/" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/kkzyu" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/AI%E5%8C%BB%E5%AD%A6/" rel="tag">AI医学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/JS/" rel="tag">JS</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/react/" rel="tag">react</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/web%E5%89%8D%E7%AB%AF/" rel="tag">web前端</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/%E5%AE%9E%E4%B9%A0%E6%97%A5%E8%AE%B0/" rel="tag">实习日记</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/blog/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" rel="tag">面试准备</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Archives</h3>
+      
+      
+        <a class="archive-link" href="/blog/archives/2025/07 ">
+          July 2025 
+          <div class="archive-count">5 </div>
+        </a>
+      
+        <a class="archive-link" href="/blog/archives/2025/06 ">
+          June 2025 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/blog/archives/2025/05 ">
+          May 2025 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/blog/archives/2025/04 ">
+          April 2025 
+          <div class="archive-count">3 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/blog/2025/07/16/day1-js-learning/" title="day1-js-learning" >
+            <div class="recent-link-text">
+              day1-js-learning
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/blog/2025/07/12/cancerAI-2/" title="多模态数字病理图像（H&E 与多重荧光）配准进度报告2" >
+            <div class="recent-link-text">
+              多模态数字病理图像（H&amp;E 与多重荧光）配准进度报告2
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/blog/2025/07/12/week1-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E8%AF%A6%E6%83%85%E9%A1%B5%E5%BC%80%E5%8F%91/" title="week1-研发周报-作业管理详情页开发" >
+            <div class="recent-link-text">
+              week1-研发周报-作业管理详情页开发
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/blog/2025/07/09/day2-react-learning/" title="day2-react-learning" >
+            <div class="recent-link-text">
+              day2-react-learning
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/blog/2025/07/08/day1-react-learning/" title="day1-react-learning" >
+            <div class="recent-link-text">
+              day1-react-learning
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="posts-day1-js-learning" class="h-entry article article-type-posts" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        day1-js-learning
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-07-16T09:50:58.000Z" itemprop="datePublished">2025-07-16</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            6.6k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JS/" rel="tag">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/web%E5%89%8D%E7%AB%AF/" rel="tag">web前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" rel="tag">面试准备</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <ol>
+<li>JS基本数据类型及它们的区别</li>
+</ol>
+<ul>
+<li><code>string</code></li>
+<li><code>number</code>：整数或浮点数。64位<strong>双精度浮点数</strong>，包含<code>Infinity</code>,<code>-Infinity</code>,<code>NaN</code>。</li>
+<li><code>bigInt</code>：表示<strong>大于</strong>2^53-1的<strong>整数</strong>，不能与number直接运算（需显式转换）。</li>
+<li><code>boolean</code>：表示true或false。</li>
+<li><code>null</code>：<strong>表示“无”或“空对象指针”</strong>，需要通过let obj &#x3D; null来赋值，但是typeof null会返回object。主要用于赋值给一些可能会返回对象的变量，作为初始化。</li>
+<li><code>undefined</code>：<strong>变量已声明但未赋值</strong>，函数无发返回值时也会默认返回undefined。</li>
+<li><code>symbol</code>：表示创建后独一无二且不可变的数据类型，主要是为了解决可能出现的全局变量冲突的问题，不可通过for…in来遍历。</li>
+<li><code>object</code>：引用类型。表示复杂数据结构，包括{}&#x2F;[]&#x2F;function&#x2F;Date等。</li>
+</ul>
+<p>【原始数据类型vs引用数据类型】</p>
+<ul>
+<li><strong>引用数据类型</strong>：存放在堆中，引用数据类型占据空间大，且大小不固定——undefined，null，boolean，number，string，symbol，bigInt。如果存在栈中，会影响程序运行的性能。<strong>引用数据类型在栈中存储了指针</strong>，该指针指向堆中该实体的起始地址——对象&#x2F;数组和函数。</li>
+<li><strong>原始数据类型</strong>：存放在栈中，栈中简单数据段，占据空间小，使用频繁的数据——对象&#x2F;数组和函数。</li>
+</ul>
+<p>【堆vs栈】</p>
+<ul>
+<li>在数据结构中，栈中数据的存取方式为<strong>先进后出</strong>。堆是一个优先队列，<strong>按照优先级来进行排序</strong>，优先级可以按照数据大小来规定。</li>
+<li>在操作系统中，栈区内存<strong>由编译器自动分配释放</strong>，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。堆区内存一般<strong>由开发者分配释放</strong>，若开发者不释放，程序结束时可能由垃圾回收机制来回收。</li>
+</ul>
+<ol start="2">
+<li>数据类型检测的方式有哪些？</li>
+</ol>
+<ul>
+<li><code>typeof</code>：这里可以检测每一种数据类型，除了object属于引用类型，其他都属于原始数据类型。其中数组[]，对象{}，和null都会被判断为object。比如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="literal">undefined</span>); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure></li>
+<li><code>instanceof</code>：obj instanceof 引用数据类型，会返回true或者false。注意instanceof只能正确判断引用数据类型。其内部运行机制是判断是否能在其原型链中找到该类型的原型（是否存在一个构造函数的prototype属性）。比如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> <span class="keyword">instanceof</span> <span class="title class_">Boolean</span>); <span class="comment">//false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([] <span class="keyword">instanceof</span> <span class="title class_">Array</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure></li>
+<li><code>constructor</code>：用于判断数据类型，以及帮助对象实例来访问它的构造函数。比如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>((<span class="keyword">function</span>(<span class="params"></span>) &#123;&#125;).<span class="property">constructor</span> === <span class="title class_">Function</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 需要注意，如果创建一个对象来改变它的原型，constructor就不能用来判断数据类型了</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Fn</span>(<span class="params"></span>)&#123;&#125;;</span><br><span class="line"><span class="title class_">Fn</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">Array</span>();</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="title class_">Fn</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(f.<span class="property">constructor</span>===<span class="title class_">Fn</span>); <span class="comment">//false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(f.<span class="property">constructor</span>===<span class="title class_">Array</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure></li>
+<li><code>Object.prototype.toString.call()</code>：使用Object对象的原型方法toString来判断数据类型。比如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">call</span>(<span class="number">2</span>));</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="3">
+<li>判断数组的方法有哪些？</li>
+</ol>
+<ul>
+<li>通过Object.prototype.toString.call()：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(obj).<span class="title function_">slice</span>(<span class="number">8</span>,-<span class="number">1</span>) ===<span class="string">&#x27;Array&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+<li>通过原型链：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.<span class="property">__proto__</span>===<span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>;</span><br></pre></td></tr></table></figure></li>
+<li>通过ES6的Array.isArray()作判断：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="title function_">isArray</span>(obj);</span><br></pre></td></tr></table></figure></li>
+<li>通过instanceof作判断：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj <span class="keyword">instanceof</span> <span class="title class_">Array</span>;</span><br></pre></td></tr></table></figure></li>
+<li>通过Array.prototype.isPrototypeOf：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">isPrototypeOf</span>(obj);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="4">
+<li><p>JS中的this的作用？<br>this是执行上下文中的一个属性，简单来说：<strong>它指向最后一次调用这个方法的对象。</strong><br>(1) 默认模式：全局环境下的this<strong>指向全局对象window</strong>。<br>(2) 隐式调用：方法调用–&gt;指向调用它的对象，如果一个函数作为一个对象的方法来调用的话那么this会指向这个对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;Alice&quot;</span>,</span><br><span class="line">    <span class="title function_">satHi</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hi,I&#x27;m<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>); <span class="comment">//this--&gt;person</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.<span class="title function_">sayHi</span>();<span class="comment">//函数作为一个对象的方法来调用</span></span><br></pre></td></tr></table></figure>
+<p>(3) 隐式调用：方法被分离后–&gt;this丢失（此时就指向window），当一个函数不是一个对象的属性时，<strong>直接作为函数来调用时，this指向全局对象。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;Alice&quot;</span>,</span><br><span class="line">    <span class="title function_">satHi</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hi,I&#x27;m<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>); <span class="comment">//this--&gt;person</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> sayHi = person.<span class="property">sayHi</span>;</span><br><span class="line"><span class="title function_">sayHi</span>(); <span class="comment">// &quot;Hi,I&#x27;m undefined&quot;此时方法已被分离（被借给了别人），this就指向window。</span></span><br></pre></td></tr></table></figure>
+<p>(4) 显式调用：call&#x2F;apply–&gt;立即调用函数并强制绑定this</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> user = &#123; <span class="attr">name</span>: <span class="string">&quot;Bob&quot;</span> &#125;;</span><br><span class="line">greet.<span class="title function_">call</span>(user); <span class="comment">//&quot;Hello,Bob&quot;(this--&gt;Bob)</span></span><br></pre></td></tr></table></figure>
+<p>(5) 显式调用：bind–&gt;返回一个永久绑定this的新函数，这个函数的this除了使用new时会被改变，其它情况都不会改变。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> boundGreet = greet.<span class="title function_">bind</span>(user);</span><br><span class="line"><span class="title function_">boundGreet</span>(); <span class="comment">//&quot;Hello,Bob&quot;(this永远指向user)</span></span><br></pre></td></tr></table></figure>
+<p>(6) 构造函数：new绑定–&gt;指向新创建的对象，如果一个函数用new来调用时，函数执行前会创建一个对象，此时this指向这个新创建的对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name; <span class="comment">//this--&gt;新对象</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> alice = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Alice&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(alice.<span class="property">name</span>); <span class="comment">//&quot;Alice&quot;，这里相当于隐式调用中的方法调用</span></span><br></pre></td></tr></table></figure>
+<p>(7) 箭头函数：继承<strong>外层作用域</strong>的this。箭头函数不会创建自己的this，它只会在自己的作用域的上一层继承this。所以箭头函数中的this的指向在它定义时已经确定了，之后永远不会改变。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> group = &#123;</span><br><span class="line">    <span class="attr">title</span>:<span class="string">&quot;Our Group&quot;</span>,</span><br><span class="line">    <span class="attr">members</span>:[<span class="string">&quot;Alice&quot;</span>,<span class="string">&quot;Bob&quot;</span>],</span><br><span class="line">    <span class="title function_">showMembers</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">members</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">member</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.title&#125;</span>:<span class="subst">$&#123;member&#125;</span>`</span>);</span><br><span class="line">        &#125;);<span class="comment">//继承了group的this</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">group.<span class="title function_">showMembers</span>();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id = <span class="string">&#x27;GLOBAL&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">id</span>:<span class="string">&#x27;OBJ&#x27;</span>,</span><br><span class="line">    <span class="attr">a</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">id</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">b</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">id</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.<span class="title function_">a</span>(); <span class="comment">//&#x27;OBJ&#x27;</span></span><br><span class="line">obj.<span class="title function_">b</span>(); <span class="comment">//&#x27;GLOBAL&#x27;</span></span><br><span class="line"><span class="keyword">new</span> obj.<span class="title function_">a</span>(); <span class="comment">//undefined，new调用时，this是新对象</span></span><br><span class="line"><span class="keyword">new</span> obj.<span class="title function_">b</span>(); <span class="comment">// Uncaught TypeError: obj.b is not a constructor，箭头函数不能作为构造函数，无法用new调用</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>let VS const VS var</p>
+</li>
+</ol>
+<ul>
+<li>块级定义域：由{}包裹，let和const具有块级作用域，而块级作用域解决了两个问题：<ul>
+<li>内层变量可能覆盖外层变量</li>
+<li>用来计数的循环变量泄露为全局变量</li>
+</ul>
+</li>
+<li>变量提升：var存在变量提升，即变量可以在未声明的时候使用。</li>
+<li>给全局添加属性：浏览器的全局对象是window，node的全局对象是global。var声明的变量为全局变量，并且会将该变量添加为全局对象的属性。</li>
+<li>重复声明：var声明变量时，可以重复声明，并且后者会覆盖前者。</li>
+<li>暂时性死区：在使用let和const命令声明变量之前，该变量都是不可用的。在未声明前使用会发生报错。</li>
+<li>初始值设置：在变量声明时，var和let可以不用设置初始值。</li>
+<li>指针指向：let和var创建的变量是可以更改指针指向（可以重新赋值），但const声明的变量是不允许改变指针的指向。</li>
+</ul>
+<ol start="6">
+<li><p>new操作符的实现原理<br>假设要用new Person(‘Alice’)来创建一个实例（类似于建造一栋属于Alice的房子）<br>(1) 建地基：首先创建了一个新的空对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newObject = &#123;&#125;;</span><br><span class="line"><span class="comment">// 开发商买了一块空地&#123;&#125;，准备在这盖房子</span></span><br></pre></td></tr></table></figure>
+<p>(2) 设计图纸：设置原型，将对象的原型设置为函数的prototype</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">newObject.<span class="property">__proto__</span> = <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>;</span><br><span class="line"><span class="comment">// 继承构造函数的原型，类似开发商拿到建筑师（Person）的设计图纸（prototype）在newObject上建造房子，这样实例就可以访问Person.prototype的方法</span></span><br></pre></td></tr></table></figure>
+<p>(3) 建造房屋：让函数的this指向这个对象，执行构造函数的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result = <span class="title class_">Person</span>.<span class="title function_">apply</span>(newObject,<span class="variable language_">arguments</span>);</span><br><span class="line"><span class="comment">// 执行构造函数，构造函数内的this就是新对象newObject。类似施工队（构造函数Person）拿着Alice的要求（arguments），在空地（newObject）上盖房子。</span></span><br></pre></td></tr></table></figure>
+<p>(4) 验收房屋：判断函数的返回值类型，如果是值类型，返回创建的对象。如果是引用类型，就返回这个引用类型的对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">NormalBakery</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">owner</span> = <span class="string">&quot;小明&quot;</span>;</span><br><span class="line">  <span class="comment">// 没有 return 或者 return 5; (非对象)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> bakery1 = <span class="keyword">new</span> <span class="title class_">NormalBakery</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(bakery1); <span class="comment">// 输出: &#123; owner: &#x27;小明&#x27; &#125; (返回了新创建的对象)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">SpecialBakery</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">owner</span> = <span class="string">&quot;小红&quot;</span>;</span><br><span class="line">  <span class="keyword">let</span> superBakery = &#123; <span class="attr">name</span>: <span class="string">&quot;超级烘焙中心&quot;</span>, <span class="attr">location</span>: <span class="string">&quot;市中心&quot;</span> &#125;;</span><br><span class="line">  <span class="keyword">return</span> superBakery; <span class="comment">// 显式返回了一个对象</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> bakery2 = <span class="keyword">new</span> <span class="title class_">SpecialBakery</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(bakery2); <span class="comment">// 输出: &#123; name: &#x27;超级烘焙中心&#x27;, location: &#x27;市中心&#x27; &#125;</span></span><br><span class="line"><span class="comment">// new 创建的那个 &#123; owner: &#x27;小红&#x27; &#125; 对象被丢弃了。</span></span><br></pre></td></tr></table></figure>
+<p>new操作符的实现原理可以总结为以下代码——</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">objectFactory</span>(<span class="params">Constructor, ...args</span>) &#123;</span><br><span class="line">    <span class="comment">// 创建地基obj，并把constructor的原型指向obj，这样obj就可以使用到constructor的方法（获得设计图纸）</span></span><br><span class="line">    <span class="keyword">const</span> obj = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Constructor</span>.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line">    <span class="comment">// 根据设计图纸来建造房屋，把毛胚房obj根据constructor方法建造起的精装房屋命名为result，具体建造工具名为args</span></span><br><span class="line">    <span class="keyword">const</span> result = <span class="title class_">Constructor</span>.<span class="title function_">apply</span>(obj,args);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断result的类型是否是一个对象，如果是的话则返回精装房result，如果不是则返回毛胚房obj</span></span><br><span class="line">    <span class="keyword">return</span> result <span class="keyword">instanceof</span> <span class="title class_">Object</span> ? result : obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 指定constructor为Person，具体的建造工具是Alice</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Alice</span> = <span class="title function_">objectFactory</span>(<span class="title class_">Person</span>, <span class="string">&#x27;Alice&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Alice</span>.<span class="property">name</span>); <span class="comment">//Alice</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组有哪些原生方法？</p>
+</li>
+</ol>
+<ul>
+<li>数组和字符串的转换方法：toString()&#x2F;toLocalString()&#x2F;join()。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits=[<span class="string">&quot;apple&quot;</span>,<span class="string">&quot;banana&quot;</span>,<span class="string">&quot;mango&quot;</span>];</span><br><span class="line"><span class="keyword">let</span> date = [<span class="keyword">new</span> <span class="title class_">Date</span>()];</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;toString():&quot;</span>,fruits.<span class="title function_">toString</span>());</span><br><span class="line"><span class="comment">// toString():apple,banana,mango</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;toLocalString():&quot;</span>,data.<span class="title function_">toLocalString</span>(<span class="string">&#x27;zh-CN&#x27;</span>));</span><br><span class="line"><span class="comment">// toLocalString():2025/7/19下午4:00:00</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;join(&#x27;-&#x27;):&quot;</span>,fruit.<span class="title function_">join</span>(<span class="string">&#x27;-&#x27;</span>));</span><br><span class="line"><span class="comment">// join(&#x27;-&#x27;):apple-banana-mango,join方法可以指定转换为字符串时的分隔符</span></span><br></pre></td></tr></table></figure></li>
+<li>数组尾部操作的方法：pop()&#x2F;push()<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits=[<span class="string">&quot;apple&quot;</span>,<span class="string">&quot;banana&quot;</span>,<span class="string">&quot;mango&quot;</span>];</span><br><span class="line"></span><br><span class="line">fruit.<span class="title function_">pop</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;执行pop()后：&quot;</span>,fruit);</span><br><span class="line"><span class="comment">// 执行pop()后：[&#x27;apple&#x27;,&#x27;banana&#x27;]</span></span><br><span class="line"></span><br><span class="line">fruit.<span class="title function_">push</span>(<span class="string">&quot;orange&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;执行push()后：&quot;</span>,fruit);</span><br><span class="line"><span class="comment">// 执行push()后：[&#x27;apple&#x27;,&#x27;banana&#x27;,&#x27;orange&#x27;]0</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/blog/2025/07/12/cancerAI-2/"
+      title="多模态数字病理图像（H&E 与多重荧光）配准进度报告2"
+     >
+
+    <p class="title-text">
+      
+        多模态数字病理图像（H&amp;E 与多重荧光）配准进度报告2
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+  
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <div id="comment-card" class="comment-card">
+    <div class="main-title-bar">
+      <div class="main-title-dot"></div>
+      <div class="main-title">Comments </div>
+    </div>
+    <div id="vcomments"></div>
+  </div>
+  <script>
+      new Valine({"enable":true,"appId":"XFCQYSkCRKnBvOkCNwwyqstI-MdYXbMMI","appKey":"4bzESEecmkEv7kba7m0CZGHE","placeholder":"talk to ido!","pageSize":10,"highlight":true,"serverURLs":["https://xfcqyskc.api.lncldglobal.com"],"el":"#vcomments"});
+  </script>
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Alanni ido<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/blog/js/light-dark-switch.js"></script>
+</body>
+</html>
