@@ -28,10 +28,10 @@
 <meta property="og:description" content="1. JS基本数据类型及它们的区别 string number：整数或浮点数。64位双精度浮点数，包含Infinity,-Infinity,NaN。 bigInt：表示大于2^53-1的整数，不能与number直接运算（需显式转换）。 boolean：表示true或false。 null：表示“无”或“空对象指针”，需要通过let obj &#x3D; null来赋值，但是typeof null会">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-07-16T09:50:58.000Z">
-<meta property="article:modified_time" content="2025-07-20T12:22:14.698Z">
+<meta property="article:modified_time" content="2025-07-20T12:27:50.301Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="web前端">
 <meta property="article:tag" content="面试准备">
+<meta property="article:tag" content="web前端">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
   
@@ -162,7 +162,7 @@
       
         <a class="archive-link" href="/blog/archives/2025/07 ">
           July 2025 
-          <div class="archive-count">8 </div>
+          <div class="archive-count">6 </div>
         </a>
       
         <a class="archive-link" href="/blog/archives/2025/06 ">
@@ -191,18 +191,6 @@
       <h3 class="widget-title">Recent Posts</h3>
       <ul>
         
-          <a class="recent-link" href="/blog/2025/07/19/week2-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E7%BB%84%E4%BB%B6%E7%AE%A1%E7%90%86%E9%A1%B5%E5%BC%80%E5%8F%91/" title="" >
-            <div class="recent-link-text">
-              (no title)
-            </div>
-          </a>
-        
-          <a class="recent-link" href="/blog/2025/07/19/week2-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E7%BB%84%E4%BB%B6%E7%AE%A1%E7%90%86%E9%A1%B5%E5%BC%80%E5%8F%91%20copy/" title="week2-研发周报-组件管理页开发" >
-            <div class="recent-link-text">
-              week2-研发周报-组件管理页开发
-            </div>
-          </a>
-        
           <a class="recent-link" href="/blog/2025/07/19/week2-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E7%BB%84%E4%BB%B6%E7%AE%A1%E7%90%86%E9%A1%B5%E5%BC%80%E5%8F%91/" title="week2-研发周报-组件管理页开发" >
             <div class="recent-link-text">
               week2-研发周报-组件管理页开发
@@ -218,6 +206,18 @@
           <a class="recent-link" href="/blog/2025/07/12/cancerAI-2/" title="多模态数字病理图像（H&E 与多重荧光）配准进度报告2" >
             <div class="recent-link-text">
               多模态数字病理图像（H&amp;E 与多重荧光）配准进度报告2
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/blog/2025/07/12/week1-%E7%A0%94%E5%8F%91%E5%91%A8%E6%8A%A5-%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E8%AF%A6%E6%83%85%E9%A1%B5%E5%BC%80%E5%8F%91/" title="week1-研发周报-作业管理详情页开发" >
+            <div class="recent-link-text">
+              week1-研发周报-作业管理详情页开发
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/blog/2025/07/09/day2-react-learning/" title="day2-react-learning" >
+            <div class="recent-link-text">
+              day2-react-learning
             </div>
           </a>
         
@@ -460,7 +460,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name</span>)&#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 修改原型，为Person的原型添加了一个名为getName的方法（多了一个属性），该方法是一个空函数。此时，Person.prototype仍然是一个对象，继承自Object.prototype，并未发生仍和改变。</span></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getName</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Alice&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">__proto__</span> === <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>) <span class="comment">// true，二者都等于Object</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">__proto__</span> === obj.<span class="property">constructor</span>.<span class="property"><span class="keyword">prototype</span></span>) <span class="comment">//true,因为obj的构造函数就是Person</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 重写原型，重写了Person.prototype，将其指向一个新的对象，这个对象有一个getName方法，它是一个空函数。此时所有通过new Person()创建的对象实例的__proto__都指向这个新的原型对象。</span></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span> = &#123;</span><br><span class="line">	<span class="attr">getName</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;&#125; <span class="comment">//getName是Person.prototype上的一个属性（而不是函数），指向了一个函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Alice&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">__proto__</span> === <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">__proto__</span> === obj.<span class="property">constructor</span>.<span class="property"><span class="keyword">prototype</span></span>) <span class="comment">//false，这里obj的构造函数不是Person了。</span></span><br><span class="line"><span class="comment">//通过new Person()创建的对象obj的__proto__指向的是Person.prototype，而Person.prototype是一个对象字面量，它的constructor属性默认指向Object，所以obj.constructor===Object。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//如果希望obj.constructor === Person，应该</span></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>=&#123;</span><br><span class="line">	<span class="attr">constructor</span>:<span class="title class_">Person</span>, <span class="comment">//手动设置构造函数</span></span><br><span class="line">	<span class="attr">getName</span>:<span class="title function_">funvtion</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="property">__proto__</span> <span class="comment">//Person.prototype</span></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span> <span class="comment">//Object.prototype</span></span><br><span class="line">obj.<span class="property">__proto__</span>.<span class="property">__proto__</span> <span class="comment">//Object.prototype</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span>;<span class="comment">// null</span></span><br></pre></td></tr></table></figure>
 
 <p>由于Object是构造函数，原型链的终点就是Object，也就是<code>Object.prototype.__Proto__</code>，而<code>Object.prototype.__Proto__===null</code>，所以原型链的终点是null。</p>
-<h3 id="11-对闭包的理解"><a href="#11-对闭包的理解" class="headerlink" title="11. 对闭包的理解"></a>11. 对闭包的理解</h3><p>__【闭包是指有权访问另一个函数作用域中变量的函数】__，创建闭包的最常见方式就是在一个函数内创建另一个函数，创建的函数可以访问到当前函数的局部变量。比如fun1(){fun2(){}}中，fun2就是闭包。</p>
+<h3 id="11-对闭包的理解"><a href="#11-对闭包的理解" class="headerlink" title="11. 对闭包的理解"></a>11. 对闭包的理解</h3><p><strong>【闭包是指有权访问另一个函数作用域中变量的函数】</strong>，创建闭包的最常见方式就是在一个函数内创建另一个函数，创建的函数可以访问到当前函数的局部变量。比如fun1(){fun2(){}}中，fun2就是闭包。</p>
 <p>用途1： 使我们在函数外部能够访问到函数内部的变量。通过使用闭包，可以通过在外部调用闭包函数，从而在外部访问到函数内部的变量，可以用这种方法来创建私有变量。</p>
 <blockquote>
 <p>可以理解为闭包创建了一个“特权”通道，允许外部通过这个通道来间接操作函数内部的变量，而不能直接访问，从而实现了数据的封装和保护。</p>
